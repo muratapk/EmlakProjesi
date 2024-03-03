@@ -14,7 +14,8 @@ namespace EmlakProjesi.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var sorgu = _db.Villas.ToList();
+            return View(sorgu);
         }
     }
 }
