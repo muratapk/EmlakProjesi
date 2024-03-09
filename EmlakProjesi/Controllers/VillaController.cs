@@ -26,27 +26,38 @@ namespace EmlakProjesi.Controllers
         [HttpPost]
         public IActionResult Create(Villa entity )
         {
-            return View();
+            _db.Villas.Add(entity);
+            _db.SaveChanges();
+            TempData["Success"] = "İşlem Başarılı";
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            return View();
+            var liste = _db.Villas.Find(id);
+            return View(liste);
         }
         [HttpPost]
         public IActionResult Edit(Villa entity)
         {
-            return View();
+            _db.Villas.Update(entity);
+            _db.SaveChanges();
+            TempData["Success"] = "Kayıt Düzeldi";
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View();
+            var liste = _db.Villas.Find(id);
+            return View(liste);
         }
         [HttpPost]
         public IActionResult Delete(Villa entity)
         {
-            return View();
+            _db.Villas.Remove(entity);
+            _db.SaveChanges();
+            TempData["Success"] = "Kayıt Silindi";
+            return RedirectToAction("Index");
         }
     }
 }
