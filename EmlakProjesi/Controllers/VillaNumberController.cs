@@ -27,6 +27,7 @@ namespace EmlakProjesi.Controllers
                Value=u.Name.ToString()
             
                });
+            ViewData["Villam"]= villam;
             return View();
         }
         [HttpPost]
@@ -41,6 +42,16 @@ namespace EmlakProjesi.Controllers
                 TempData["Success"] = "İşlem Başarılı";
                 return RedirectToAction("Index");
             }
+
+            //Eğer veriler boş ise tekrar seçim kutusunu doldurmak yeniden viewdata kullanarak aynı ekrana verileri gönderiyorum.
+            IEnumerable<SelectListItem> villam = _db.Villas.ToList().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Name.ToString()
+
+            });
+            ViewData["Villam"] = villam;
+
             return View();
            
         }
