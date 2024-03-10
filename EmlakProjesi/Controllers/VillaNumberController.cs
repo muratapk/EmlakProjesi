@@ -17,6 +17,7 @@ namespace EmlakProjesi.Controllers
         public IActionResult Index()
         {
             var sorgu = _db.VillaNumbers.ToList();
+            //GetAll()
             return View(sorgu);
         }
         [HttpGet]
@@ -38,6 +39,7 @@ namespace EmlakProjesi.Controllers
             {
 
                 _db.VillaNumbers.Add(entity);
+                //Void Add()
                 _db.SaveChanges();
                 TempData["Success"] = "İşlem Başarılı";
                 return RedirectToAction("Index");
@@ -65,6 +67,7 @@ namespace EmlakProjesi.Controllers
         public IActionResult Edit(VillaNumber entity)
         {
             _db.VillaNumbers.Update(entity);
+            //void Update()
             _db.SaveChanges();
             TempData["Success"] = "Kayıt Düzeldi";
             return RedirectToAction("Index");
@@ -73,13 +76,16 @@ namespace EmlakProjesi.Controllers
         public IActionResult Delete(int id)
         {
             var liste = _db.VillaNumbers.Find(id);
+            //Get(id) interface kullandığım get methodu
             return View(liste);
         }
         [HttpPost]
         public IActionResult Delete(VillaNumber entity)
         {
             _db.VillaNumbers.Remove(entity);
+            //void Delete()
             _db.SaveChanges();
+            //void Save()
             TempData["Success"] = "Kayıt Silindi";
             return RedirectToAction("Index");
         }
