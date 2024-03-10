@@ -9,6 +9,7 @@
         <label for="text" class="col-4 col-form-label">Villa Number</label>
         <div class="col-8">
             <input id="text" asp-for="Villa_Number"  placeholder="Villa Number" type="text" class="form-control">
+             <span asp-validation-for="Villa_Number" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
@@ -17,12 +18,14 @@
             <select asp-for="VillaId">
                 <option value="">Seçiminizi Yapın</option>
             </select>
+            <span asp-validation-for="VillaId" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
         <label for="text1" class="col-4 col-form-label">Special Details</label>
         <div class="col-8">
             <textarea asp-for="SpecialDetails" class="form-control"></textarea>
+            <span asp-validation-for="SpecialDetails" class="text-danger"></span>
         </div>
     </div>
     

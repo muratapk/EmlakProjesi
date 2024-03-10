@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Data;
 using EntityLayer.Entire;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EmlakProjesi.Controllers
 {
@@ -21,15 +22,27 @@ namespace EmlakProjesi.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> villam = _db.Villas.ToList().Select(u => new SelectListItem{
+               Text=u.Name,
+               Value=u.Name.ToString()
+            
+               });
             return View();
         }
         [HttpPost]
         public IActionResult Create(VillaNumber entity )
         {
-            _db.VillaNumbers.Add(entity);
-            _db.SaveChanges();
-            TempData["Success"] = "İşlem Başarılı";
-            return RedirectToAction("Index");
+            //form içindeki verileri kontrol etmek için kullanıyoruz
+            if(ModelState.IsValid)
+            {
+
+                _db.VillaNumbers.Add(entity);
+                _db.SaveChanges();
+                TempData["Success"] = "İşlem Başarılı";
+                return RedirectToAction("Index");
+            }
+            return View();
+           
         }
         [HttpGet]
         public IActionResult Edit(int id)
