@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Entire.VillaNumber
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-action="Create" asp-controller="Villa" method="post">
+    <div class="form-group row">
+        <label for="text" class="col-4 col-form-label">Villa Number</label>
+        <div class="col-8">
+            <input id="text" asp-for="Villa_Number"  placeholder="Villa Number" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="textarea" class="col-4 col-form-label">Description</label>
+        <div class="col-8">
+            <select asp-for="VillaId">
+                <option value="">Seçiminizi Yapın</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text1" class="col-4 col-form-label">Special Details</label>
+        <div class="col-8">
+            <textarea asp-for="SpecialDetails" class="form-control"></textarea>
+        </div>
+    </div>
+    
+    
+    
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Gönder Kayde</button>
+        </div>
+    </div>
+</form>
+

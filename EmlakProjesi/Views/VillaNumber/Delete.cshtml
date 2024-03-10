@@ -1,0 +1,57 @@
+﻿@model EntityLayer.Entire.Villa
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-action="Delete" asp-controller="Villa" method="post">
+    <div class="form-group row">
+        <input type="hidden" asp-for="Id"/>
+        <label for="text" class="col-4 col-form-label">Name</label>
+        <div class="col-8">
+            <input readonly id="text" asp-for="Name"  placeholder="Name" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="textarea" class="col-4 col-form-label">Description</label>
+        <div class="col-8">
+            <textarea readonly id="textarea" asp-for="Description" cols="40" rows="5" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text1" class="col-4 col-form-label">Price</label>
+        <div class="col-8">
+            <input readonly id="text1" asp-for="Price" placeholder="Price" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text2" class="col-4 col-form-label">ImageUrl</label>
+        <div class="col-8">
+            <input readonly id="text2" asp-for="ImageUrl" placeholder="ImageUrl" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text3" class="col-4 col-form-label">Occupancy</label>
+        <div class="col-8">
+            <input readonly id="text3" asp-for="Occupancy" placeholder="Occupancy" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text4" class="col-4 col-form-label">CreateDate</label>
+        <div class="col-8">
+            <input readonly id="text4" asp-for="CreateDate" placeholder="CreateDate" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text5" class="col-4 col-form-label">UpdateDate</label>
+        <div class="col-8">
+            <input readonly id="text5" asp-for="UpdateDate" placeholder="UpdateDate" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Silme</button>
+        </div>
+    </div>
+</form>
+

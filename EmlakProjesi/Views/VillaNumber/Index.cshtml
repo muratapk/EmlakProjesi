@@ -1,0 +1,61 @@
+﻿@model List<EntityLayer.Entire.VillaNumber>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+  <a href="/Villa/Create" class="btn btn-primary">Yeni Kayıt</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Villa Number</th>
+                        <th>VillaId</th>
+                        <th>SpecialDetails</th>
+                        
+                        <th>Düzeltme</th>
+                        <th>Silme</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Adı</th>
+                        <th>Ücreti</th>
+                        <th>Resmi</th>
+                        <th>Doluluk Durumu</th>
+                        <th>Giriş Tarihi</th>
+                        <th>Çıkış Tarihi</th>
+                        <th>Düzeltme</th>
+                        <th>Silme</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                  @foreach(var item in Model)
+                  {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.ImageUrl</td>
+                        <td>@item.Occupancy</td>
+                        <td>@item.CreateDate</td>
+                        <td>@item.UpdateDate</td>
+                            <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Düzelt</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Silme</a></td>
+                    </tr>
+                  }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
