@@ -11,7 +11,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(
  options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))   
     );
+//interface ile repository birbirine haberleþmesi için tanýmlama yapýyoruz.
 builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+builder.Services.AddScoped<IVillaNumber, VillaNumberRepository>();
 
 var app = builder.Build();
 

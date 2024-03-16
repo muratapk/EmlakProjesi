@@ -1,23 +1,27 @@
-﻿using DataAccessLayer.Data;
+﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Data;
 using EntityLayer.Entire;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmlakProjesi.Controllers
 {
     public class VillaNumberController : Controller
     {
         private readonly ApplicationDbContext _db;
-
-        public VillaNumberController(ApplicationDbContext db)
+        private readonly IVillaNumber _villanumberRepo;
+        public VillaNumberController(IVillaNumber villaNumberRepo, ApplicationDbContext db)
         {
+            _villanumberRepo = villaNumberRepo;
             _db = db;
         }
 
         public IActionResult Index()
         {
-            var sorgu = _db.VillaNumbers.ToList();
+           // var sorgu = _db.VillaNumbers.Include("Villa").ToList();
             //GetAll()
+            var sorgu=_villanumberRepo.GetAll();
             return View(sorgu);
         }
         [HttpGet]
