@@ -20,6 +20,6 @@ namespace DataAccessLayer.Abstract
         void Update(Villa villa);
         void Delete(Villa villa);
         void Save();
-
+        //kaydetme işlemi yapıldı
     }
 }
