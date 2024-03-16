@@ -17,8 +17,11 @@ namespace DataAccessLayer.Abstract
         T Get(Expression<Func<T, bool>> filter, string? includeProperties = null);
         //filter olacak string boş ise includeProperties boş kabul edebilirsin
         void Add(T entity);
+        //ekleme işlemi 
         void Update(T entity);
+        //düzeltme işlemin geçerleştir
         void Delete(T entity);
+        //silme işlemin gerçekleştir
         
     }
 }

@@ -51,6 +51,7 @@ namespace DataAccessLayer.Concrete
                 }
             }
             return query.FirstOrDefault();
+            //tek bir veri çektiğimi firstordefault
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
@@ -71,6 +72,7 @@ namespace DataAccessLayer.Concrete
                 }
             }
             return query.ToList();
+            //tüm verilerinin gelmesi için toList metodu kullan
         }
 
        
