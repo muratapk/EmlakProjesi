@@ -1,0 +1,55 @@
+﻿@model List<EntityLayer.Entire.Musteri>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+  <a href="/Musteri/Create" class="btn btn-primary">Yeni Kayıt</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Müşteri Adı</th>
+                        <th>Email</th>
+                        <th>Şifre</th>
+                        <th>Düzeltme</th>
+                        <th>Silme</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Müşteri Adı</th>
+                        <th>Email</th>
+                        <th>Şifre</th>
+                        <th>Düzeltme</th>
+                        <th>Silme</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                  @foreach(var item in Model)
+                  {
+                    <tr>
+                        <td>@item.MusteriAd</td>
+                        <td>@item.Email</td>
+                        <td>@item.Password</td>
+                        
+                            <td><a asp-action="Edit" asp-route-id="@item.MusteriId" class="btn btn-primary">Düzelt</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@item.MusteriId" class="btn btn-danger">Silme</a></td>
+                    </tr>
+                  }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

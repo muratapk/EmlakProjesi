@@ -14,7 +14,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 //interface ile repository birbirine haberleþmesi için tanýmlama yapýyoruz.
 builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 builder.Services.AddScoped<IVillaNumber, VillaNumberRepository>();
-
+builder.Services.AddScoped<IMusteriRepository, MusteriRepository>();
+//
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

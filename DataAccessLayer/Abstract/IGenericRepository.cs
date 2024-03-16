@@ -22,6 +22,7 @@ namespace DataAccessLayer.Abstract
         //düzeltme işlemin geçerleştir
         void Delete(T entity);
         //silme işlemin gerçekleştir
+        void Save();
         
     }
 }

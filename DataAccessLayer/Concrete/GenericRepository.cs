@@ -26,6 +26,7 @@ namespace DataAccessLayer.Concrete
         {
             dbset.Add(entity);
             
+            
         }
 
         public void Delete(T entity)
@@ -80,6 +81,10 @@ namespace DataAccessLayer.Concrete
         public void Update(T entity)
         {
             dbset.Update(entity);
+        }
+        public void Save()
+        {
+            _db.SaveChanges();
         }
     }
 }
