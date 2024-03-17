@@ -74,6 +74,31 @@ namespace EmlakProjesi.Controllers
         [HttpPost]
         public IActionResult Edit(Villa entity)
         {
+
+            if (entity.ImagePath != null)
+            {
+                //model içerisinde imageurl boş değilse bu kısımında işlem yap
+                string filename = Guid.NewGuid().ToString();
+                //16 basamaklı benzersiz bir isim dosyası oluşturuyor..
+                string uzanti = Path.GetExtension(entity.ImagePath.FileName);
+                //gelen dosyayının uzantısı alıyorum geni yeni.jpg ise .jpg kısmını al
+                string yeni_isim = filename + uzanti;
+                string kayityeri = Path.Combine(_webHostEnviroment.WebRootPath, @"Room_Images\");
+                using (var filestream = new FileStream(Path.Combine(kayityeri, yeni_isim), FileMode.Create))
+                {
+                    entity.ImagePath.CopyTo(filestream);
+                    entity.ImageUrl = @"\Room_Images\" + yeni_isim;
+                    //veritabanına belirtilen yol ve dosya ismine göre kayıt eklemesi ImageUrl değer atıyoruz
+                }
+
+            }
+            else
+            {
+                //model içindeki imageurl boş ise bu kısımda işlem yap
+                entity.ImageUrl = "/Room_Images/resim-yok.png";
+            }
+
+
             // _db.Villas.Update(entity);
             _unitofWork.Villa.Update(entity);
             //_db.SaveChanges();
