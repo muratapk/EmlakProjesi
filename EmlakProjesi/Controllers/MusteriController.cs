@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Entire;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,17 +8,23 @@ namespace EmlakProjesi.Controllers
 {
     public class MusteriController : Controller
     {
-        private readonly IMusteriRepository _musteriRepository;
+        //private readonly IMusteriRepository _musteriRepository;
+        //bu yerine oluşturduğumuz unitofwork yapısını buraya çağırıyoruz
+        private readonly IUnitofWork _unit;
 
-        public MusteriController(IMusteriRepository musteriRepository)
+        //public MusteriController(IMusteriRepository musteriRepository)
+        //{
+        //    _musteriRepository = musteriRepository;
+        //}
+
+        public MusteriController(IUnitofWork unit)
         {
-            _musteriRepository = musteriRepository;
+            _unit = unit;
         }
-
         // GET: MusteriController
         public ActionResult Index()
         {
-            var sorgu = _musteriRepository.GetAll();
+            var sorgu = _unit.Musteri.GetAll();
             return View(sorgu);
         }
 
@@ -40,8 +47,8 @@ namespace EmlakProjesi.Controllers
         {
             try
             {
-                _musteriRepository.Add(entity);
-                _musteriRepository.Save();
+                _unit.Musteri.Add(entity);
+                _unit.Musteri.Save();
                 TempData["Success"] = "Ekleme İşlemi Başarılı";
                 return RedirectToAction(nameof(Index));
             }
@@ -54,7 +61,7 @@ namespace EmlakProjesi.Controllers
         // GET: MusteriController/Edit/5
         public ActionResult Edit(int id)
         {
-           var sorgu= _musteriRepository.Get(x => x.MusteriId == id);
+           var sorgu= _unit.Musteri.Get(x => x.MusteriId == id);
             return View(sorgu);
         }
 
@@ -65,8 +72,8 @@ namespace EmlakProjesi.Controllers
         {
             try
             {
-                _musteriRepository.Update(entity);
-                _musteriRepository.Save();
+                _unit.Musteri.Update(entity);
+                _unit.Musteri.Save();
                 TempData["Success"] = "Güncelleme İşlemi Başarılı";
                 return RedirectToAction(nameof(Index));
             }
@@ -79,7 +86,7 @@ namespace EmlakProjesi.Controllers
         // GET: MusteriController/Delete/5
         public ActionResult Delete(int id)
         {
-            var sorgu = _musteriRepository.Get(x => x.MusteriId == id);
+            var sorgu = _unit.Musteri.Get(x => x.MusteriId == id);
             return View(sorgu);
             //silinecek kaydı ekrana getirmesi için bunu yazıyoruz
         }
@@ -91,8 +98,8 @@ namespace EmlakProjesi.Controllers
         {
             try
             {
-                _musteriRepository.Delete(entity);
-                _musteriRepository.Save();
+                _unit.Musteri.Delete(entity);
+                _unit.Musteri.Save();
                 TempData["Success"] = "Silme İşlemi Başarılı";
                 return RedirectToAction(nameof(Index));
             }

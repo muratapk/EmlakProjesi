@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +21,7 @@ namespace EntityLayer.Entire
         //doluluk durumu
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set;}
+        [NotMapped]
+        public IFormFile? ImagePath { get; set; }
     }
 }
