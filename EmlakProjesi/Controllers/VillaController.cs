@@ -35,7 +35,7 @@ namespace EmlakProjesi.Controllers
         //resim dosyasını yüklerken bu yani post ile içeriye alacağız
         public IActionResult Create(Villa entity )
         {
-            if(entity.ImageUrl!=null)
+            if(entity.ImagePath!=null)
             {
                 //model içerisinde imageurl boş değilse bu kısımında işlem yap
                 string filename = Guid.NewGuid().ToString();
@@ -48,6 +48,7 @@ namespace EmlakProjesi.Controllers
                 {
                     entity.ImagePath.CopyTo(filestream);
                     entity.ImageUrl = @"\Room_Images\" + yeni_isim;
+                    //veritabanına belirtilen yol ve dosya ismine göre kayıt eklemesi ImageUrl değer atıyoruz
                 }
 
             }
