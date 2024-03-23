@@ -12,9 +12,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(
  options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))   
     );
 //interface ile repository birbirine haberleþmesi için tanýmlama yapýyoruz.
-builder.Services.AddScoped<IVillaRepository, VillaRepository>();
-builder.Services.AddScoped<IVillaNumber, VillaNumberRepository>();
-builder.Services.AddScoped<IMusteriRepository, MusteriRepository>();
+//builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+//builder.Services.AddScoped<IVillaNumber, VillaNumberRepository>();
+//builder.Services.AddScoped<IMusteriRepository, MusteriRepository>();
+//yukardý kullanýmý servisler tek çatýda altýna toplayarak unitwork yapýsýný oluþturduk ve bunu
+//servis olarak sistem tanýttýk
+builder.Services.AddScoped<IUnitofWork, UnitofWork>();
 //
 var app = builder.Build();
 
