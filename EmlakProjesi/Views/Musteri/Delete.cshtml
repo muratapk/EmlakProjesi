@@ -6,7 +6,7 @@
 
 <form asp-action="Delete" asp-controller="Musteri" method="post">
     <div class="text-danger" asp-validation-summary="All"></div>
-
+    <input type="hidden" asp-for="MusteriId" />
     <div class="form-group row">
         <label for="text" class="col-4 col-form-label">Villa Number</label>
         <div class="col-8">

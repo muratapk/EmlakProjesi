@@ -74,6 +74,8 @@ namespace EmlakProjesi.Controllers
             {
                 return View();
             }
+
+            //deneme
         }
 
         // GET: MusteriController/Delete/5
