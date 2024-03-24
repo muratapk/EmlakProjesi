@@ -1,6 +1,8 @@
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Data;
+using EntityLayer.Entire;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(
  options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))   
     );
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 //interface ile repository birbirine haberleþmesi için tanýmlama yapýyoruz.
 //builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 //builder.Services.AddScoped<IVillaNumber, VillaNumberRepository>();

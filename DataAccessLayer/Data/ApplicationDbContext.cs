@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Entire;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,18 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Data
 {
-    public class ApplicationDbContext : DbContext
+
+    //identityDbContext yapısını ekliyoruz DbContext siliyoruz
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-       public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-       public  DbSet<Villa> Villas { get; set; }
-       public DbSet<VillaNumber>VillaNumbers { get; set; }
-       public DbSet<Musteri> Musteris { get; set; }
+        public DbSet<Villa> Villas { get; set; }
+        public DbSet<VillaNumber> VillaNumbers { get; set; }
+        public DbSet<Musteri> Musteris { get; set; }
+        public DbSet<ApplicationUser>ApplicationUsers { get; set; }
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    // base.OnModelCreating(modelBuilder);
