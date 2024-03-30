@@ -7,6 +7,7 @@ using EntityLayer.Entire;
 using Microsoft.Build.Framework;
 using EmlakProjesi.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace EmlakProjesi.Controllers
 {
     public class AccountController : Controller
@@ -63,6 +64,51 @@ namespace EmlakProjesi.Controllers
 
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterVM registerVM)
+        {
 
+            ApplicationUser user = new() {
+                Name = registerVM.Name,
+                Email=registerVM.Email,
+                PhoneNumber=registerVM.PhoneNumber,
+                FirstName=registerVM.FirstName,
+                LastName=registerVM.LastName,
+                NormalizedEmail=registerVM.Email.ToUpper(),
+                EmailConfirmed=true,
+                CreateAt=DateTime.Now,
+                
+
+            };
+
+            var result = await _userManager.CreateAsync(user,registerVM.PassWord);
+            
+            if(result.Succeeded)
+            {
+                if(!string.IsNullOrEmpty(registerVM.Role))
+                {
+                    await _userManager.AddToRoleAsync(user, registerVM.Role);
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(user, "Customer");
+                }
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Index","Admin");
+
+            }
+
+
+            IEnumerable<SelectListItem> RolesTable = _roleManager.Roles.ToList().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Name.ToString()
+
+            });
+            ViewData["Roles"] = RolesTable;
+            return View();
+        }
+
+          
     }
 }
