@@ -6,6 +6,9 @@ namespace EmlakProjesi.ViewModels
 {
     public class LoginVM
     {
+
+       
+
         [Required]
         public string Email {  get; set; }
         [Required]
@@ -23,6 +26,8 @@ namespace EmlakProjesi.ViewModels
         public string? RedirectUrl { get; set; }
 
         public string? Role { get; set; }
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
         public IEnumerable<SelectListItem> RoleList { get; set; }
     }
 }

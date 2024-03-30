@@ -95,9 +95,13 @@ namespace EmlakProjesi.Controllers
                 }
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Index","Admin");
-
+                
             }
 
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
 
             IEnumerable<SelectListItem> RolesTable = _roleManager.Roles.ToList().Select(u => new SelectListItem
             {
