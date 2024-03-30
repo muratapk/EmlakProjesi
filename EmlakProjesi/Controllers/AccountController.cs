@@ -40,15 +40,20 @@ namespace EmlakProjesi.Controllers
                 _roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
                 _roleManager.CreateAsync(new IdentityRole("Customer")).Wait();
             }
+            IEnumerable<SelectListItem> RolesTable = _roleManager.Roles.ToList().Select(u=>new SelectListItem{
+            Text=u.Name,
+            Value=u.Name.ToString()
+            
+            });
 
-            LoginVM registerList = new()
-            {
-                RoleList = _roleManager.Roles.Select(x => new SelectListItem
-                {
-                    Text = x.Name,
-                    Value = x.Name
-                })
-            };
+            //LoginVM registerList = new()
+            //{
+            //    RoleList = _roleManager.Roles.Select(x => new SelectListItem
+            //    {
+            //        Text = x.Name,
+            //        Value = x.Name
+            //    })
+            //};
                 
            
 
