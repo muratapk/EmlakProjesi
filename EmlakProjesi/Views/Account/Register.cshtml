@@ -80,7 +80,7 @@
 
 
                                         <div class="form-group">
-                                            <select class="form-select form-control-user" asp-for="Role" asp-items="@Model.RoleList">
+                                            <select class="form-select form-control-user" asp-for="Role" asp-items="@ViewData["Roles"] as IEnumerable<SelectListItem>">
                                                <option value="">Seçim Yapınız</option>
                                            </select>
                                         </div>

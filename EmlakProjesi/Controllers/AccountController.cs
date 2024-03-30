@@ -45,7 +45,11 @@ namespace EmlakProjesi.Controllers
             Value=u.Name.ToString()
             
             });
-
+            //<select>
+            //<option value="1">Adana</option>
+            //<option value="2">İstanbul</option>
+            //</select>
+            ViewData["Roles"] = RolesTable;
             //LoginVM registerList = new()
             //{
             //    RoleList = _roleManager.Roles.Select(x => new SelectListItem
