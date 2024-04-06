@@ -16,6 +16,7 @@ namespace EmlakApi.Controllers
         {
             _context = context;
         }
+        //tüm verileri çekmek için kullanıyoruz
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Musteri>>> GetMusteri()
         {
@@ -23,6 +24,8 @@ namespace EmlakApi.Controllers
             return await _context.Musteris.ToListAsync();
             //async kullandığınızda mutlaka tolistAsync kullanmak zorundasınız
         }
+
+        //tek veri çekmek için kullanıyorum
         [HttpGet("id")]
         public async Task<ActionResult<Musteri>> GetMusteri(int id)
         {
@@ -43,6 +46,7 @@ namespace EmlakApi.Controllers
             }
             return result;
         }
+        //güncelleme
         [HttpPut]
         public async Task<ActionResult<Musteri>>UpdateMusteri(Musteri musteri,int id)
         {
@@ -57,6 +61,12 @@ namespace EmlakApi.Controllers
             }
             return result;
         }
+
+        //dört method get verileri listelemek için tek bir veri olabilir tüm veriler
+        //method post kaydet kullanılan yeni  bir method
+        //delete buda veri silmek sillmak
+        //put verileri güncellemek için kullanıyoruz
+        //yeni verileri kaydetmek için kullanıyoruz
         [HttpPost]
         public async Task<ActionResult> PostMusteri(Musteri musteri)
         {
