@@ -5,7 +5,7 @@ namespace EmlakProjesi.Controllers
 {
     public class MusteriApiController : Controller
     {
-        Uri baseAddress = new Uri("https://localhost:7019/api");
+        Uri baseAddress = new Uri("https://localhost:7019/api/");
         public IActionResult Index()
         {
             return View();
