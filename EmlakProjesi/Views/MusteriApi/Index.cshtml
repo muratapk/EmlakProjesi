@@ -14,7 +14,16 @@
         <td><a class ="btn btn-Success">Düzeltme</a></td>
         <td><a class="btn btn-Danger">Silme</a></td>
     </tr>
-
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.MusteriAd</td>
+            <td>@item.Password</td>
+            <td>@item.Email</td>
+            <td><a class="btn btn-Success" asp-action="Edit" asp-route-id="@item.MusteriId">Düzeltme</a></td>
+            <td><a class="btn btn-Danger" asp-action="Delete" asp-route-id="@item.MusteriId">Silme</a></td>
+        </tr>
+    }
 
 
 </table>

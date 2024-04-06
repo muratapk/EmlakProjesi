@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{9E674D06-156E-4946-9A5C-53D3FEFC5E7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmlakApi", "EmlakApi\EmlakApi.csproj", "{459A3C4D-FDE7-4BD4-BC82-F94A700FE33E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmlakApi", "EmlakApi\EmlakApi.csproj", "{459A3C4D-FDE7-4BD4-BC82-F94A700FE33E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
